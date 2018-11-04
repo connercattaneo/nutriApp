@@ -14,30 +14,42 @@ import { WebBrowser } from 'expo';
 
 import { MonoText } from '../components/StyledText';
 
-
-
 import t from 'tcomb-form-native'; // 0.6.9
 
 const Form = t.form.Form;
 
 const User = t.struct({
   gender: t.String,
-  // age: t.String,
-  // weight: t.String,
-  // height: t.String,
-  // Body_Mass_Index: t.String
+   age: t.String,
+   weight: t.String,
+   height: t.String
+   //Body_Mass_Index: t.String
 });
 
 export default class HomeScreen extends React.Component {
   handleSubmit = () => {
    const value = this.refs.form.getValue(); // use that ref to get the form value
    console.log('value:', value);
-   fetch('https://www.google.com').then(res => console.log(res)).catch(err => console.log(err))
+  // fetch('http://localhost:8000').then(res => console.log(res)).catch(err => console.log(err))
+  fetch('http://localhost:8000/send', {
+    method: "POST", // *GET, POST, PUT, DELETE, etc.
+    //mode: "cors", // no-cors, cors, *same-origin
+   // cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+   // credentials: "same-origin", // include, *same-origin, omit
+    headers: {
+        "Content-Type": "application/json; charset=utf-8",
+        // "Content-Type": "application/x-www-form-urlencoded",
+    },
+   // redirect: "follow", // manual, *follow, error
+   //referrer: "no-referrer", // no-referrer, *client
+    body: JSON.stringify(value), // body data type must match "Content-Type" header
+}).then(res => console.log(res)).catch(err => console.log(err))
    console.log('the fetch came back')
   }
   static navigationOptions = {
     header: null,
-  };
+    
+  }
 
 
   render() {
@@ -56,8 +68,7 @@ export default class HomeScreen extends React.Component {
               <Button
                 title="Sign Up!"
                 onPress={this.handleSubmit}
-                />
-            </View>
+                /></View>
           </View>
       </ScrollView>
     );
