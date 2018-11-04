@@ -22,17 +22,18 @@ const Form = t.form.Form;
 
 const User = t.struct({
   gender: t.String,
-  age: t.String,
-  weight: t.String,
-  height: t.String,
-  Body_Mass_Index: t.String
+  // age: t.String,
+  // weight: t.String,
+  // height: t.String,
+  // Body_Mass_Index: t.String
 });
 
 export default class HomeScreen extends React.Component {
   handleSubmit = () => {
-   console.log('in the handle submit func!: ');
    const value = this.refs.form.getValue(); // use that ref to get the form value
-   console.log('value: ', value);
+   console.log('value:', value);
+   fetch('https://www.google.com').then(res => console.log(res)).catch(err => console.log(err))
+   console.log('the fetch came back')
   }
   static navigationOptions = {
     header: null,
@@ -62,6 +63,25 @@ export default class HomeScreen extends React.Component {
     );
   }
 
+  // document.getElementById('root')
+  // );
+  // if(this.state.formSubmitted){
+  //   <h1>submitted</h1>
+  // }
+
+//   function Greeting(props) {
+//   const isLoggedIn = props.isLoggedIn;
+//   if (isLoggedIn) {
+//     return <UserGreeting />;
+//   }
+//   return <GuestGreeting />;
+// }
+//
+// ReactDOM.render(
+//   // Try changing to isLoggedIn={true}:
+//   <Greeting isLoggedIn={false} />,
+//   document.getElementById('root')
+// );
   _maybeRenderDevelopmentModeWarning() {
     if (__DEV__) {
       const learnMoreButton = (

@@ -14,7 +14,12 @@
   },
   "dependencies": {
     "@expo/samples": "2.1.1",
+    "body-parser": "^1.18.3",
     "expo": "^31.0.2",
+    "express": "^4.16.4",
+    "fs": "0.0.1-security",
+    "http": "0.0.0",
+    "https": "^1.0.0",
     "react": "16.5.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-31.0.0.tar.gz",
     "react-native-fbsdk": "^0.8.0",
